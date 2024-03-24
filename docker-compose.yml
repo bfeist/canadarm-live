@@ -11,17 +11,3 @@ services:
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - "443:443"
-    networks:
-      - boilerplate-network
-
-  express:
-    build:
-      context: .
-      dockerfile: /docker/express/Dockerfile
-      target: prod
-    networks:
-      - boilerplate-network
-
-networks:
-  boilerplate-network:
-    driver: bridge

@@ -1,44 +1,13 @@
-# Boilerplate for React / Express app written in TS
+# Live CanadaArm2 orientation using International Space Station telemetry
 
 ## Description
-
-This is a web application boilerplate that integrates React, Vite, Express, and TypeScript. This setup provides a robust development environment with hot module replacement for the frontend and an efficient build system for both frontend and backend.
-
-## Features
-
-- React for building user interfaces.
-- Vite (with swc) for an ultra-fast frontend development experience.
-  - Includes css modules
-- Vite for front-end builds
-- Express for API endpoints
-- TypeScript for adding type safety to JavaScript.
-- vscode debugging for frontend / backend
-- Esbuild for efficient backend builds.
-- Proxying of api endpoints through Vite environment during development
-- Common typings between frontend and backend
-- esLint with rules from recent projects
-- prettier with the standard rules
-- Jest testing setup with one example test file
-- File-based routing (`/src/pages` for all routes)
-- `/src/public` for static assets
-- Docker deployment working
-  - Only `prod` setup for now
-
-### Notes
-
-- Express .env reference is the typical `process.env.VALUE`
-- Client-side (build time by Vite) .env reference is `import.meta.env.VALUE`
-
-### TODO:
-
-- Did them all!
 
 ## Installation
 
 1. To get started, clone the repository and install the dependencies:
 
    ```bash
-   git clone https://github.com/bfeist/vite-express-ts.git
+   git clone https://github.com/bfeist/canadarm-live.git
    cd vite-express-ts
    npm install
    ```
@@ -68,7 +37,7 @@ To build the application for production:
 npm run build
 ```
 
-This script builds both the frontend and backend parts of the application. The result is put in `.local/vite/dist`and `.local/express/dist` respectively.
+This script builds the application. The result is put in `.local/vite/dist`.
 
 ### Start Production Server
 
@@ -83,20 +52,15 @@ This runs a simple `node ./.local/express/dist/api.js` command to start the expr
 ### Deploy via Docker
 
 - `npm run docker:preview:rebuild`
-  - Builds two docker images:
+  - Builds docker image:
     - `nginx`
       - vite is used to build the front-end (React) to static assets in `/.local/vite/dist`
       - these are copied into the nginx image at the default nginx path
       - `/api/v1/` routes are proxied to the `express` server
-    - `express`
-      - esbuild is used to build to a static file `/.local/express/dist/api.js`
-      - this file is copied to a node container and run with `node /api.js`
 - `npm run docker:preview` to start the containers
 - Go to `https://localhost` to hit the nginx server
 
 ## Structure
 
 - `src/`: Contains the source code for the React frontend.
-- `src/server/`: Contains the source code for the Express backend.
 - `.local/vite/dist`: Destination for the built frontend files.
-- `.local/express/dist`: Destination for the built backend server files.

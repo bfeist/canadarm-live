@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently -n vite \"npm run vite:dev\"",
+    "dev": "npm run vite:dev",
     "build": "npm run vite:build",
     "start": "node ./.local/express/dist/api.js",
     "vite:build": "vite build --emptyOutDir",
@@ -21,11 +21,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@react-three/drei": "^9.102.6",
+    "@react-three/fiber": "^8.15.19",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.22.3",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "three": "^0.162.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -45,7 +48,7 @@
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "typescript": "5.4.3",
+    "typescript": "^5.4.3",
     "vite": "^5.2.6",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-pages": "^0.32.0"

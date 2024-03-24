@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import eslint from "vite-plugin-eslint";
 import Pages from "vite-plugin-pages";
 import path from "path";
 
@@ -10,7 +9,6 @@ export default defineConfig({
   envDir: "../",
   plugins: [
     react(),
-    eslint(),
     Pages({
       pagesDir: [{ dir: "pages", baseRoute: "" }],
       extensions: ["tsx"],
@@ -22,13 +20,6 @@ export default defineConfig({
     },
   },
   server: {
-    proxy: {
-      "/api/v1": {
-        target: "http://localhost:5000/",
-        changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api\/v1/, ""),
-      },
-    },
     port: 5100,
   },
   build: {

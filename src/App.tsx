@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import routes from "~react-pages";
 
-function App(): JSX.Element {
+const App = (): React.ReactElement => {
   return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
-}
+};
 
 export default App;

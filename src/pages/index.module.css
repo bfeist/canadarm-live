@@ -1,5 +1,7 @@
-.app {
-  text-align: center;
+.scene {
+  width: 100%;
+  height: 100vh;
+  background-color: #333333;
 }
 
 .button {
