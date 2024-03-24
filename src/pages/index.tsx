@@ -85,7 +85,10 @@ const Scene = (): JSX.Element => {
       ]);
 
       // subscribes to the ISS telemetry
-      this.client = new LightstreamerClient("http://push.lightstreamer.com", "ISSLIVE");
+      this.client = new LightstreamerClient(
+        (document.location.protocol === "https:" ? "https" : "http") + "://push.lightstreamer.com",
+        "ISSLIVE"
+      );
       this.client.subscribe(sub);
       this.client.subscribe(timeSub);
 
@@ -127,7 +130,7 @@ const Scene = (): JSX.Element => {
               break;
           }
 
-          setJointAngles(tempJointAnglesRef.current);
+          setJointAngles({ ...tempJointAnglesRef.current });
         },
       });
 
@@ -190,7 +193,7 @@ const Scene = (): JSX.Element => {
           <directionalLight position={[-1000, 1000, 1000]} intensity={1} />
           <gridHelper args={[50, 10]} />
           <Suspense fallback={null}>
-            <Model jointAngles={jointAngles} telemetryStatus={telemetryStatus} />
+            <Model jointAngles={jointAngles} />
           </Suspense>
           <PerspectiveCamera makeDefault position={[-100, 20, 5]} />
           <OrbitControls
@@ -207,8 +210,7 @@ const Scene = (): JSX.Element => {
 
 const Model: FunctionComponent<{
   jointAngles: SSRMSJointAngles;
-  telemetryStatus: TelemetryStatus;
-}> = ({ jointAngles, telemetryStatus }) => {
+}> = ({ jointAngles }) => {
   const modelRef = useRef<THREE.Object3D>();
   const { scene } = useThree();
 
@@ -245,7 +247,7 @@ const Model: FunctionComponent<{
           break;
       }
     });
-  }, [jointAngles, scene, telemetryStatus]);
+  }, [jointAngles, scene]);
 
   useEffect(() => {
     const loader = new ColladaLoader();
@@ -271,10 +273,7 @@ const Model: FunctionComponent<{
   //update the model's rotation based on the joint angles
   useEffect(() => {
     updateJointAngles();
-  }, [scene, modelLoaded, jointAngles, telemetryStatus]);
-
-  // scene.position.set(0, 3, 0);
-  // scene.rotation.x = THREE.MathUtils.degToRad(180);
+  }, [scene, modelLoaded, jointAngles]);
 
   return <primitive object={scene} ref={modelRef} />;
 };
