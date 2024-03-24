@@ -1,9 +1,20 @@
-.scene {
-  width: 100%;
+.pageContainer {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
+}
+
+.scene {
+  flex: 1;
   background-color: #333333;
 }
 
-.button {
-  font-size: calc(10px + 2vmin);
+.dataFields {
+  flex: 0 0 80px;
+  background-color: #222222;
+  color: #cccccc;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
 }
