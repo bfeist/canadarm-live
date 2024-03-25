@@ -131,6 +131,15 @@ const Scene = (): JSX.Element => {
           }
 
           setJointAngles({ ...tempJointAnglesRef.current });
+          // setJointAngles({
+          //   sr: 0,
+          //   sy: 0,
+          //   sp: 0,
+          //   ep: 0,
+          //   wp: 0,
+          //   wy: 0,
+          //   wr: 0,
+          // });
         },
       });
 
@@ -225,17 +234,17 @@ const Model: FunctionComponent<{
         case "SR":
           child.rotation.x = THREE.MathUtils.degToRad(jointAngles.sr);
           break;
-        case "SP":
-          child.rotation.z = THREE.MathUtils.degToRad(jointAngles.sp);
-          break;
         case "SY":
           child.rotation.y = THREE.MathUtils.degToRad(jointAngles.sy);
+          break;
+        case "SP":
+          child.rotation.z = THREE.MathUtils.degToRad(jointAngles.sp);
           break;
         case "EP":
           child.rotation.y = THREE.MathUtils.degToRad(jointAngles.ep);
           break;
         case "WP":
-          child.rotation.x = THREE.MathUtils.degToRad(jointAngles.wp);
+          child.rotation.y = THREE.MathUtils.degToRad(jointAngles.wp);
           break;
         case "WY":
           child.rotation.z = THREE.MathUtils.degToRad(jointAngles.wy);

@@ -56,7 +56,6 @@ This runs a simple `node ./.local/express/dist/api.js` command to start the expr
     - `nginx`
       - vite is used to build the front-end (React) to static assets in `/.local/vite/dist`
       - these are copied into the nginx image at the default nginx path
-      - `/api/v1/` routes are proxied to the `express` server
 - `npm run docker:preview` to start the containers
 - Go to `https://localhost` to hit the nginx server
 
