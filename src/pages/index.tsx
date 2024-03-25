@@ -206,7 +206,7 @@ const Scene = (): JSX.Element => {
           </Suspense>
           <PerspectiveCamera makeDefault position={[-100, 20, 5]} />
           <OrbitControls
-            target={[0, 30, 0]}
+            target={[0, 20, 0]}
             minPolarAngle={Math.PI / 2}
             maxPolarAngle={Math.PI / 2}
           />
